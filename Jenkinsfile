@@ -10,15 +10,22 @@ stages {
 	}
 	   stage('Build') {
 	      steps {
+	        sh 'mvn clean package'
 		echo 'maven build the code ...'
 	     }
 	}
 
-	  stage('Deploy') {
+	  stage('Test') {
 	     steps{
 		echo 'Testing complete & deploy'
 	    }
 	}
+	stage('Deploy to Prod'){
+	  steps {
+	       sh 'java -jar target/*.jar'
+	       echo 'Successfully code deployed...'
+	      }
    }
 
+}
 }
