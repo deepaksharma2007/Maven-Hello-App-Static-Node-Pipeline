@@ -26,6 +26,10 @@ stages {
 	       echo 'Successfully code deployed...'
 	      }
    }
-
+  	stage('Archieve'){
+	   steps {
+	   archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+	   }
+}
 }
 }
